@@ -1,0 +1,80 @@
+
+/* error.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.error-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.error-content {
+    max-width: 600px;
+    background-color: white;
+    padding: 50px 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.error-code {
+    font-size: 100px;
+    font-weight: bold;
+    margin: 0;
+    color: #d9534f;
+}
+
+.error-title {
+    font-size: 32px;
+    margin: 10px 0 15px;
+}
+
+.error-message {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.error-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.error-button:hover {
+    background-color: #555;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 600px) {
+
+    .error-content {
+        padding: 35px 20px;
+    }
+
+    .error-code {
+        font-size: 70px;
+    }
+
+    .error-title {
+        font-size: 25px;
+    }
+
+    .error-message {
+        font-size: 16px;
+    }
+}
