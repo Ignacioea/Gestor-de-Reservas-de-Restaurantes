@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Rol(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50, unique=True)
     descripcion = models.CharField(max_length=100)
 
     class Meta:
@@ -16,7 +16,7 @@ class Rol(models.Model):
 class Usuario(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    email = models.CharField(max_length=150)
+    email = models.EmailField(max_length=150, unique=True)
     telefono = models.CharField(max_length=20)
     password_hash = models.CharField(max_length=255)
     fecha_registro = models.DateTimeField(auto_now_add=True)
@@ -44,7 +44,7 @@ class Restaurante(models.Model):
 
 class Sector(models.Model):
     nombre = models.CharField(max_length=100)
-    descripcion = models.CharField(max_length=255)
+    descripcion = models.CharField(max_length=255, blank = True, null=True)
     restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
 
     class Meta:
@@ -76,20 +76,21 @@ class Bloqueo(models.Model):
         db_table_comment = "Excepciones de disponibilidad (puede ser por mantención, avería o eventos privados)"
   
     def __str__(self):
-        return f"Bloqueo: {self.mesa.nombre}: {self.motivo}"
+        return f"Bloqueo: {self.mesa.codigo_mesa}: {self.motivo}"
 
 class Reserva(models.Model):
-    codigo_reserva = models.CharField(max_length=15)
+    codigo_reserva = models.CharField(max_length=15, unique=True)
     fecha_reserva = models.DateField()
     hora_inicio = models.TimeField()
     hora_fin_estimada= models.TimeField()
     cantidad_personas = models.IntegerField()
-    estado = models.CharField(max_length=20)
+    estado = models.CharField(max_length=20, default="PENDIENTE")
     comentario = models.CharField(max_length=255)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     restaurante = models.ForeignKey(Restaurante, on_delete = models.CASCADE)
 
+    mesas = models.ManyToManyField(Mesa, through="ReservaMesa", related_name="reservas")
     class Meta:
         db_table_comment = "Registro central de las reservas realizadas por los clientes"
       
