@@ -126,4 +126,3 @@ class ReservaMesa(models.Model):
     def __str__(self):
         return f"Reserva {self.reserva.codigo_reserva} asignada a Mesa {self.mesa.codigo_mesa}"
 
-    
