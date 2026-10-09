@@ -20,5 +20,6 @@ from reservations import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("reservations", include("reservations.urls")),
+    path("", views.home),
+    path("reservations/", include("reservations.urls"))
 ]
