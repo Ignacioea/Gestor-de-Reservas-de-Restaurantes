@@ -147,13 +147,3 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
-
-# Parche de compatibilidad completa para MariaDB 10.4 (XAMPP)
-from django.db.backends.base.base import BaseDatabaseWrapper
-from django.db.backends.mysql.features import DatabaseFeatures
-
-# 1. Ignorar el chequeo estricto de versión mínima
-BaseDatabaseWrapper.check_database_version_supported = lambda self: None
-
-# 2. Desactivar el uso de 'RETURNING' en sentencias INSERT
-DatabaseFeatures.can_return_columns_from_insert = property(lambda self: False)
