@@ -5,65 +5,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Gestor de Reservas</title>
-
+    <title>Sistema de Reservas</title>
+    <!-- Tipografías -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Tu CSS personalizado -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
 
-    <header>
-        <h1>Gestor de Reservas</h1>
-
-        <nav>
-            <a href="/">Inicio</a>
-            <a href="#">Reservas</a>
-            <a href="#">Contacto</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h2>Bienvenido</h2>
-
-        <p>
-            Gestiona las reservas de tu restaurante
-            de manera sencilla y organizada.
-        </p>
-
-        <a href="#" class="button">
-            Realizar una reserva
-        </a>
-    </section>
-
-    <section class="features">
-
-        <div class="card">
-            <h3>Reservas</h3>
-            <p>
-                Crea y administra las reservas de tus clientes.
-            </p>
+    <div class="hero-section d-flex flex-column justify-content-between">
+        
+        <!-- Botón Hamburguesa arriba a la izquierda -->
+        <div class="p-4">
+            <button class="btn btn-hamburger" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" title="Abrir menú">
+                <i class="bi bi-list fs-4"></i>
+            </button>
         </div>
 
-        <div class="card">
-            <h3>Disponibilidad</h3>
-            <p>
-                Consulta fácilmente las mesas disponibles.
-            </p>
+        <!-- Menú Lateral Izquierdo (Offcanvas de Bootstrap) -->
+        <div class="offcanvas offcanvas-start custom-offcanvas" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+            <div class="offcanvas-header border-bottom border-secondary border-opacity-25 px-4 py-3">
+                <a class="logo text-decoration-none" id="menuLateralLabel">RESERVAS</a>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+            </div>
+            
+            <div class="offcanvas-body px-3 py-4">
+                <nav class="nav flex-column gap-2 sidebar-nav">
+                    <a class="nav-link active" href="/">
+                        <i class="bi bi-house-door me-2"></i> Inicio
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-shield-lock me-2"></i> Roles
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-people me-2"></i> Usuarios
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-shop me-2"></i> Restaurantes
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-layers me-2"></i> Sectores
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-layout-wtf me-2"></i> Mesas
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-calendar-check me-2"></i> Reservas
+                    </a>
+                </nav>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>Gestión</h3>
-            <p>
-                Mantén toda la información organizada.
+        <!-- Contenido central -->
+        <main class="hero-content text-center mx-auto px-3">
+            <h1 class="hero-title mb-3">Sistema de Reservas</h1>
+            <p class="hero-subtitle mb-0">
+                Organiza, consulta disponibilidad y asegura tu mesa en tiempo real de forma rápida y sencilla.
             </p>
-        </div>
+        </main>
 
-    </section>
+        <!-- Footer -->
+        <footer class="hero-footer text-center py-3">
+            &copy; 2026 Sistema de Reservas. Todos los derechos reservados.
+        </footer>
+    </div>
 
-    <footer>
-        <p>Gestor de Reservas © 2026</p>
-    </footer>
-
+    <!-- Bootstrap 5 JS Bundle (necesario para abrir/cerrar el Offcanvas) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
