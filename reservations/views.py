@@ -1,70 +1,71 @@
 from django.shortcuts import render 
 from rest_framework import viewsets
-
-from .models import(
-    Rol,
-    Usuario,
-    Restaurante,
-    Sector,
-    Mesa,
-    Bloqueo,
-    Reserva,
-    CambioReserva,
-    ReservaMesa
-    )
-
-from .serializer import(
-    RolSerializer,
-    UsuarioSerializer,
-    RestauranteSerializer,
-    SectorSerializer,
-    MesaSerializer,
-    BloqueoSerializer,
-    ReservaSerializer,
-    CambioReservaSerializer,
-    ReservaMesaSerializer
-)
+from django.urls import reverse_lazy
+from .forms import RolForm
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+from . import models as mod 
+from . import serializer as ser
 # Create your views here.
 
 def home(request):
     return render(request, "home.html")
 
-#creación de vistas basadas en clase
+#rol
+class RolListView(ListView):
+    model = mod.Rol
+    template_name = "roles/lista_roles.html"
+    context_object_name="roles"
+
+class RolCreateView(CreateView):
+    model = mod.Rol
+    form_class = RolForm
+    template_name = "roles/form_rol.html"
+    success_url = reverse_lazy("roles")
+
+class RolUpdateView(UpdateView):
+    model = mod.Rol
+    form_class = RolForm
+    template_name = "roles/form_rol.html"
+    success_url = reverse_lazy("roles")
+
+class RolDeleteView(DeleteView):
+    model = mod.Rol
+    template_name = "roles/eliminar_rol.html"
+    success_url = reverse_lazy("roles")
 
 class RolViewSet (viewsets.ModelViewSet):
-    queryset = Rol.objects.all()
-    serializer_class = RolSerializer
-
+    queryset = mod.Rol.objects.all()
+    serializer_class = ser.RolSerializer
 
 class UsuarioViewSet (viewsets.ModelViewSet):
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
+    queryset = mod.Usuario.objects.all()
+    serializer_class = ser.UsuarioSerializer
 
 
 class RestauranteViewSet (viewsets.ModelViewSet):
-    queryset = Restaurante.objects.all()
-    serializer_class = RestauranteSerializer
+    queryset = mod.Restaurante.objects.all()
+    serializer_class = ser.RestauranteSerializer
 
 class SectorViewSet (viewsets.ModelViewSet):
-    queryset = Sector.objects.all()
-    serializer_class = SectorSerializer
+    queryset = mod.Sector.objects.all()
+    serializer_class = ser.SectorSerializer
 
 class MesaViewSet (viewsets.ModelViewSet):
-    queryset = Mesa.objects.all()
-    serializer_class = MesaSerializer
+    queryset = mod.Mesa.objects.all()
+    serializer_class = ser.MesaSerializer
 
 class BloqueoViewSet (viewsets.ModelViewSet):
-    queryset = Bloqueo.objects.all()
-    serializer_class = BloqueoSerializer
+    queryset = mod.Bloqueo.objects.all()
+    serializer_class = ser.BloqueoSerializer
 
 class ReservaViewSet (viewsets.ModelViewSet):
-    queryset = Reserva.objects.all()
-    serializer_class = ReservaSerializer
+    queryset = mod.Reserva.objects.all()
+    serializer_class = ser.ReservaSerializer
 
 class CambioReservaViewSet (viewsets.ModelViewSet):
-    queryset = CambioReserva.objects.all()
-    serializer_class = CambioReservaSerializer
+    queryset = mod.CambioReserva.objects.all()
+    serializer_class = ser.CambioReservaSerializer
 
 class ReservaMesaViewSet (viewsets.ModelViewSet):
-    queryset = ReservaMesa.objects.all()
-    serializer_class = ReservaMesaSerializer
+    queryset = mod.ReservaMesa.objects.all()
+    serializer_class = ser.ReservaMesaSerializer
