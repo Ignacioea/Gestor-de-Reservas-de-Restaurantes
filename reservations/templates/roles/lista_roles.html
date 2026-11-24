@@ -27,7 +27,7 @@
                     {% for rol in roles %}
                     <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
                         <td class="ps-4 text-light">{{ rol.id }}</td>
-                        <td><span class="badge" style="background-color: rgba(212, 163, 89, 0.2); color: #f3c677; border: 1px solid rgba(212, 163, 89, 0.4);">{{ rol.nombre }}</span></td>
+                        <td class="text-light opacity-75">{{ rol.nombre }}</td>
                         <td class="text-light opacity-75">{{ rol.descripcion }}</td>
                         <td class="pe-4 text-end">
                             <a href="{% url 'editar_rol' rol.id %}" class="btn btn-sm btn-outline-warning me-1">Editar</a>
@@ -36,7 +36,7 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="4" class="text-center text-muted py-4">No hay roles registrados aún.</td>
+                        <td colspan="4" class="text-center text-muted py-4 ">No hay roles registrados aún.</td>
                     </tr>
                     {% endfor %}
                 </tbody>

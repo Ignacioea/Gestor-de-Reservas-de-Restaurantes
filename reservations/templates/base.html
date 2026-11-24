@@ -33,7 +33,7 @@
                     <a class="nav-link {% if 'roles' in request.path %}active{% endif %}" href="{% url 'roles' %}">
                         <i class="bi bi-shield-lock me-2"></i> Roles
                     </a>
-                    <a class="nav-link {% if 'usuarios' in request.path %}active{% endif %}" href="#">
+                    <a class="nav-link {% if 'usuarios' in request.path %}active{% endif %}" href="{% url 'usuarios' %}">
                         <i class="bi bi-people me-2"></i> Usuarios
                     </a>
                     <a class="nav-link {% if 'restaurantes' in request.path %}active{% endif %}" href="#">
