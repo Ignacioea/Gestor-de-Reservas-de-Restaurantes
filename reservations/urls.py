@@ -40,6 +40,12 @@ urlpatterns = [
     path("restaurante/crear", views.RestauranteCreateView.as_view(), name="crear_restaurante"),
     path("restaurante/editar/<int:pk>/", views.RestauranteUpdateView.as_view(), name="editar_restaurante"),
     path("restaurante/eliminar/<int:pk>/", views.RestauranteDeleteView.as_view(), name="eliminar_restaurante"),
+
+    #SECTORES
+    path("sector/", views.SectorListView.as_view(), name="sector"),
+    path("sector/crear", views.SectorCreateView.as_view(), name="crear_sector"),
+    path("sector/editar/<int:pk>/", views.SectorUpdateView.as_view(), name="editar_sector"),
+    path("sector/eliminar/<int:pk>/", views.SectorDeleteView.as_view(), name="eliminar_sector"),
         
 
 ]

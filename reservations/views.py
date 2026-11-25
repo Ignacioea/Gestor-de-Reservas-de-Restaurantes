@@ -1,7 +1,7 @@
 from django.shortcuts import render 
 from rest_framework import viewsets
 from django.urls import reverse_lazy
-from .forms import RolForm, UsuarioForm, RestauranteForm
+from . import forms as fo
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from . import models as mod 
 from . import serializer as ser
@@ -18,13 +18,13 @@ class RolListView(ListView):
 
 class RolCreateView(CreateView):
     model = mod.Rol
-    form_class = RolForm
+    form_class = fo.RolForm
     template_name = "roles/form_rol.html"
     success_url = reverse_lazy("roles")
 
 class RolUpdateView(UpdateView):
     model = mod.Rol
-    form_class = RolForm
+    form_class = fo.RolForm
     template_name = "roles/form_rol.html"
     success_url = reverse_lazy("roles")
 
@@ -45,13 +45,13 @@ class UsuarioListView(ListView):
 
 class UsuarioCreateView(CreateView):
     model = mod.Usuario
-    form_class = UsuarioForm
+    form_class = fo.UsuarioForm
     template_name = "usuarios/form_usuario.html"
     success_url = reverse_lazy("usuarios")
 
 class UsuarioUpdateView(UpdateView):
     model = mod.Usuario
-    form_class = UsuarioForm
+    form_class = fo.UsuarioForm
     template_name = "usuarios/form_usuario.html"
     success_url = reverse_lazy("usuarios")
 
@@ -72,13 +72,13 @@ class RestauranteListView(ListView):
 
 class RestauranteCreateView(CreateView):
     model = mod.Restaurante
-    form_class = RestauranteForm
+    form_class = fo.RestauranteForm
     template_name = "restaurante/form_restaurante.html"
     success_url = reverse_lazy("restaurante")
 
 class RestauranteUpdateView(UpdateView):
     model = mod.Restaurante
-    form_class = RestauranteForm
+    form_class = fo.RestauranteForm
     template_name = "restaurante/form_restaurante.html"
     success_url = reverse_lazy("restaurante")
 
@@ -93,6 +93,29 @@ class RestauranteViewSet (viewsets.ModelViewSet):
     serializer_class = ser.RestauranteSerializer
 
 #SECTOR
+
+class SectorListView(ListView):
+    model = mod.Sector
+    template_name = "sectores/lista_sector.html"
+    context_object_name="sector"
+
+class SectorCreateView(CreateView):
+    model = mod.Sector
+    form_class = fo.SectorForm
+    template_name = "sectores/form_sector.html"
+    success_url = reverse_lazy("sector")
+
+class SectorUpdateView(UpdateView):
+    model = mod.Sector
+    form_class = fo.SectorForm
+    template_name = "sectores/form_sector.html"
+    success_url = reverse_lazy("sector")
+
+class SectorDeleteView(DeleteView):
+    model = mod.Sector
+    template_name = "sectores/eliminar_sector.html"
+    success_url = reverse_lazy("sector")
+
 class SectorViewSet (viewsets.ModelViewSet):
     queryset = mod.Sector.objects.all()
     serializer_class = ser.SectorSerializer

@@ -39,7 +39,7 @@
                     <a class="nav-link {% if 'restaurantes' in request.path %}active{% endif %}" href="{% url 'restaurante' %}">
                         <i class="bi bi-shop me-2"></i> Restaurantes
                     </a>
-                    <a class="nav-link {% if 'sectores' in request.path %}active{% endif %}" href="#">
+                    <a class="nav-link {% if 'sectores' in request.path %}active{% endif %}" href="{% url 'sector' %}">
                         <i class="bi bi-layers me-2"></i> Sectores
                     </a>
                     <a class="nav-link {% if 'mesas' in request.path %}active{% endif %}" href="#">

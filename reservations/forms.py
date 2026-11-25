@@ -129,3 +129,33 @@ class RestauranteForm(forms.ModelForm):
                 }
             ),
         }
+
+
+class SectorForm(forms.ModelForm):
+    class Meta:
+        model = mod.Sector
+        fields = [
+            'restaurante',
+            'nombre',
+            'descripcion',
+        ]
+        widgets = {
+            'restaurante': forms.Select(
+                attrs={
+                    'class': 'form-select',
+                }
+            ),
+            'nombre': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ej: Terraza, Salón Principal, VIP...',
+                }
+            ),
+            'descripcion': forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Descripción o características del sector (opcional)...',
+                    'rows': '3',
+                }
+            ),
+        }
