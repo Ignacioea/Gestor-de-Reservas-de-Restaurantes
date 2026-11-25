@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-0 shadow-lg mx-auto" style="max-width: 750px; background-color: rgba(25, 22, 19, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(212, 163, 89, 0.25) !important;">
+        <div class="card-header border-bottom border-secondary py-3" style="background-color: rgba(212, 163, 89, 0.12);">
+            <h4 class="mb-0" style="color: #e5b869;">
+                {% if object %}Editar Restaurante{% else %}Agregar Restaurante{% endif %}
+            </h4>
+        </div>
+        <div class="card-body p-4 text-light">
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="id_nombre" class="form-label">Nombre del Restaurante:</label>
+                        {{ form.nombre }}
+                        <div class="text-danger small">{{ form.nombre.errors }}</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_direccion" class="form-label">Dirección:</label>
+                        {{ form.direccion }}
+                        <div class="text-danger small">{{ form.direccion.errors }}</div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="id_telefono" class="form-label">Teléfono:</label>
+                        {{ form.telefono }}
+                        <div class="text-danger small">{{ form.telefono.errors }}</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_capacidad_total" class="form-label">Capacidad Total (personas):</label>
+                        {{ form.capacidad_total }}
+                        <div class="text-danger small">{{ form.capacidad_total.errors }}</div>
+                    </div>
+                </div>
+
+                <div class="mb-4 form-check">
+                    {{ form.estado }}
+                    <label for="id_estado" class="form-check-label">Local operativo / activo</label>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{% url 'restaurante' %}" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn fw-semibold" style="background-color: #d4a359; color: #181512;">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

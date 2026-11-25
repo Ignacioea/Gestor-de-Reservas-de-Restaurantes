@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-0 shadow-lg mx-auto" style="max-width: 500px; background-color: rgba(25, 22, 19, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(220, 53, 69, 0.4) !important;">
+        <div class="card-header border-bottom border-secondary py-3">
+            <h4 class="mb-0 text-danger">Eliminar Restaurante</h4>
+        </div>
+        <div class="card-body p-4 text-light">
+            <p>¿Estás seguro de que deseas eliminar el Restaurante <strong>{{ object.nombre }}</strong>?</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a href="{% url 'restaurante' %}" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

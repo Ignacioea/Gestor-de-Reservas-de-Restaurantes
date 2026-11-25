@@ -1,69 +1,21 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Inicio - Sistema de Reservas{% endblock %}
 
-    <title>Gestor de Reservas</title>
-
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-
-<body>
-
-    <header>
-        <h1>Gestor de Reservas</h1>
-
-        <nav>
-            <a href="/">Inicio</a>
-            <a href="#">Reservas</a>
-            <a href="#">Contacto</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h2>Bienvenido</h2>
-
-        <p>
-            Gestiona las reservas de tu restaurante
-            de manera sencilla y organizada.
+{% block content %}
+<div class="flex-grow-1 d-flex flex-column justify-content-between text-center px-4">
+    
+    <!-- Espacio superior -->
+    <div></div>
+    <!-- texto central -->
+    <div class="hero-content mx-auto">
+        <h1 class="hero-title mb-3">Sistema de Reservas</h1>
+        <p class="hero-subtitle mx-auto">
+            Organiza, consulta disponibilidad y asegura tu mesa en tiempo real de forma rápida y sencilla.
         </p>
+    </div>
+    <!-- Espacio inferior -->
+    <div></div>
 
-        <a href="#" class="button">
-            Realizar una reserva
-        </a>
-    </section>
-
-    <section class="features">
-
-        <div class="card">
-            <h3>Reservas</h3>
-            <p>
-                Crea y administra las reservas de tus clientes.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Disponibilidad</h3>
-            <p>
-                Consulta fácilmente las mesas disponibles.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Gestión</h3>
-            <p>
-                Mantén toda la información organizada.
-            </p>
-        </div>
-
-    </section>
-
-    <footer>
-        <p>Gestor de Reservas © 2026</p>
-    </footer>
-
-</body>
-</html>
+</div>
+{% endblock %}
