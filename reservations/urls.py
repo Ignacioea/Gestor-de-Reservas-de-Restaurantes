@@ -52,5 +52,11 @@ urlpatterns = [
     path("mesa/crear", views.MesaCreateView.as_view(), name="crear_mesa"),
     path("mesa/editar/<int:pk>/", views.MesaUpdateView.as_view(), name="editar_mesa"),
     path("mesa/eliminar/<int:pk>/", views.MesaDeleteView.as_view(), name="eliminar_mesa"),
-            
+
+    #reservas
+    path("reserva/", views.ReservaListView.as_view(), name="reserva"),
+    path("reserva/crear", views.ReservaCreateView.as_view(), name="crear_reserva"),
+    path("reserva/editar/<int:pk>/", views.ReservaUpdateView.as_view(), name="editar_reserva"),
+    path("reserva/eliminar/<int:pk>/", views.ReservaDeleteView.as_view(), name="eliminar_reserva"),
+           
 ]

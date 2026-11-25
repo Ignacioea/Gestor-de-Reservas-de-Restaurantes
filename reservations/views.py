@@ -153,6 +153,28 @@ class BloqueoViewSet (viewsets.ModelViewSet):
     serializer_class = ser.BloqueoSerializer
 
 #RESERVAS
+class ReservaListView(ListView):
+    model = mod.Reserva
+    template_name = "reservas/lista_reserva.html"
+    context_object_name="reserva"
+
+class ReservaCreateView(CreateView):
+    model = mod.Reserva
+    form_class = fo.ReservaForm
+    template_name = "reservas/form_reserva.html"
+    success_url = reverse_lazy("reserva")
+
+class ReservaUpdateView(UpdateView):
+    model = mod.Reserva
+    form_class = fo.ReservaForm
+    template_name = "reservas/form_reserva.html"
+    success_url = reverse_lazy("reserva")
+
+class ReservaDeleteView(DeleteView):
+    model = mod.Reserva
+    template_name = "reservas/eliminar_reserva.html"
+    success_url = reverse_lazy("reserva")
+
 class ReservaViewSet (viewsets.ModelViewSet):
     queryset = mod.Reserva.objects.all()
     serializer_class = ser.ReservaSerializer

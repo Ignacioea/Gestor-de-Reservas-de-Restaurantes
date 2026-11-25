@@ -202,3 +202,86 @@ class MesaForm(forms.ModelForm):
                 }
             ),
         }
+
+ESTADOS_RESERVA = [
+    ('PENDIENTE', 'Pendiente'),
+    ('CONFIRMADA', 'Confirmada'),
+    ('SENTADA', 'Sentada'),
+    ('CANCELADA', 'Cancelada'),
+    ('NO-SHOW', 'No-Show'),
+    ('FINALIZADA', 'Finalizada'),
+]
+
+class ReservaForm(forms.ModelForm):
+    class Meta:
+        model = mod.Reserva
+        fields = [
+            'codigo_reserva',
+            'usuario',
+            'restaurante',
+            'fecha_reserva',
+            'hora_inicio',
+            'hora_fin_estimada',
+            'cantidad_personas',
+            'estado',
+            'comentario',
+        ]
+        widgets = {
+            'codigo_reserva': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ej: RES-001...',
+                }
+            ),
+            'usuario': forms.Select(
+                attrs={
+                    'class': 'form-select',
+                }
+            ),
+            'restaurante': forms.Select(
+                attrs={
+                    'class': 'form-select',
+                }
+            ),
+            'fecha_reserva': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs={
+                    'class': 'form-control',
+                    'type': 'date',
+                }
+            ),
+            'hora_inicio': forms.TimeInput(
+                format='%H:%M',
+                attrs={
+                    'class': 'form-control',
+                    'type': 'time',
+                }
+            ),
+            'hora_fin_estimada': forms.TimeInput(
+                format='%H:%M',
+                attrs={
+                    'class': 'form-control',
+                    'type': 'time',
+                }
+            ),
+            'cantidad_personas': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ej: 4',
+                    'min': '1',
+                }
+            ),
+            'estado': forms.Select(
+                choices=ESTADOS_RESERVA,
+                attrs={
+                    'class': 'form-select',
+                }
+            ),
+            'comentario': forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Observaciones del cliente (opcional)...',
+                    'rows': '3',
+                }
+            ),
+        }

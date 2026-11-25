@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-0 shadow-lg mx-auto" style="max-width: 800px; background-color: rgba(25, 22, 19, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(212, 163, 89, 0.25) !important;">
+        <div class="card-header border-bottom border-secondary py-3" style="background-color: rgba(212, 163, 89, 0.12);">
+            <h4 class="mb-0" style="color: #e5b869;">
+                {% if object %}Editar Reserva{% else %}Nueva Reserva{% endif %}
+            </h4>
+        </div>
+        <div class="card-body p-4 text-light">
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="id_codigo_reserva" class="form-label">Código Reserva:</label>
+                        {{ form.codigo_reserva }}
+                        <div class="text-danger small">{{ form.codigo_reserva.errors }}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="id_usuario" class="form-label">Cliente / Usuario:</label>
+                        {{ form.usuario }}
+                        <div class="text-danger small">{{ form.usuario.errors }}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="id_restaurante" class="form-label">Restaurante:</label>
+                        {{ form.restaurante }}
+                        <div class="text-danger small">{{ form.restaurante.errors }}</div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="id_fecha_reserva" class="form-label">Fecha:</label>
+                        {{ form.fecha_reserva }}
+                        <div class="text-danger small">{{ form.fecha_reserva.errors }}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="id_hora_inicio" class="form-label">Hora Inicio:</label>
+                        {{ form.hora_inicio }}
+                        <div class="text-danger small">{{ form.hora_inicio.errors }}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="id_hora_fin_estimada" class="form-label">Hora Fin Estimada:</label>
+                        {{ form.hora_fin_estimada }}
+                        <div class="text-danger small">{{ form.hora_fin_estimada.errors }}</div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="id_cantidad_personas" class="form-label">Cantidad de Personas:</label>
+                        {{ form.cantidad_personas }}
+                        <div class="text-danger small">{{ form.cantidad_personas.errors }}</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_estado" class="form-label">Estado:</label>
+                        {{ form.estado }}
+                        <div class="text-danger small">{{ form.estado.errors }}</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_comentario" class="form-label">Comentario:</label>
+                    {{ form.comentario }}
+                    <div class="text-danger small">{{ form.comentario.errors }}</div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{% url 'reserva' %}" class="btn btn-outline-secondary">Cancelar</a>
+                    <button type="submit" class="btn fw-semibold" style="background-color: #d4a359; color: #181512;">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

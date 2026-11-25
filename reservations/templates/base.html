@@ -45,7 +45,7 @@
                     <a class="nav-link {% if 'mesas' in request.path %}active{% endif %}" href="{% url 'mesa' %}">
                         <i class="bi bi-layout-wtf me-2"></i> Mesas
                     </a>
-                    <a class="nav-link {% if 'reservas' in request.path %}active{% endif %}" href="#">
+                    <a class="nav-link {% if 'reservas' in request.path %}active{% endif %}" href="{% url 'reserva' %}">
                         <i class="bi bi-calendar-check me-2"></i> Reservas
                     </a>
                 </nav>
