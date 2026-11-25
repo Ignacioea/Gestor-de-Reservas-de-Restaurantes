@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-0 shadow-lg mx-auto" style="max-width: 600px; background-color: rgba(25, 22, 19, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(212, 163, 89, 0.25) !important;">
+        <div class="card-header border-bottom border-secondary py-3 d-flex justify-content-between align-items-center" style="background-color: rgba(212, 163, 89, 0.12);">
+            <h4 class="mb-0" style="color: #e5b869;">Detalle del Rol</h4>
+        </div>
+        <div class="card-body p-4 text-light">
+            <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">ID</small>
+                <span class="fs-5 fw-semibold text-white">{{ rol.id }}</span>
+            </div>
+            <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">Nombre del rol</small>
+                <p class="mb-0 text-light opacity-75">{{ rol.nombre }}</p>
+            </div>
+
+            <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">Descripción</small>
+                <p class="mb-0 text-light opacity-75">{{ rol.descripcion|default:"Sin descripción registrada" }}</p>
+            </div>
+
+            <div class="mb-4">
+                <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">Usuarios asociados</small>
+                <span class="text-light opacity-75">{{ rol.usuario_set.count }} usuario(s) con este rol</span>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <a href="{% url 'roles' %}" class="btn btn-outline-secondary">Volver</a>
+                <a href="{% url 'editar_rol' rol.id %}" class="btn btn-outline-warning">Editar</a>
+                <a href="{% url 'eliminar_rol' rol.id %}" class="btn btn-outline-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}  

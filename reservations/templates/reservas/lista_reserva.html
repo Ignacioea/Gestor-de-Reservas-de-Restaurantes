@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0 text-white fw-bold">Gestión de Reservas</h2>
         <a href="{% url 'crear_reserva' %}" class="btn fw-semibold px-3" style="background-color: #d4a359; color: #181512;">
-            + Nueva reserva
+            Agregar Reserva
         </a>
     </div>
 
@@ -17,7 +17,6 @@
             <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-hover-bg: rgba(212, 163, 89, 0.1);">
                 <thead>
                     <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); color: #d4a359;">
-                        <th class="ps-4">ID</th>
                         <th>Código</th>
                         <th>hora inicio</th>
                         <th>cantidad de personas</th>
@@ -29,13 +28,13 @@
                 <tbody>
                     {% for reserva in reserva %}
                     <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                        <td class="ps-4 text-light">{{ reserva.id }}</td>
                         <td class="text-light opacity-75">{{ reserva.codigo_reserva }}</td>
                         <td class="text-light opacity-75">{{ reserva.hora_inicio }}</td>
                         <td class="text-light opacity-75">{{ reserva.cantidad_personas }}</td>
                         <td class="text-light opacity-75">{{ reserva.usuario }}</td>
                         <td class="text-light opacity-75">{{ reserva.restaurante }}</td>
                         <td class="pe-4 text-end">
+                            <a href="{% url 'detalle_reserva' reserva.id %}" class="btn btn-sm btn-outline-info me-1">Detalle</a>
                             <a href="{% url 'editar_reserva' reserva.id %}" class="btn btn-sm btn-outline-warning me-1">Editar</a>
                             <a href="{% url 'eliminar_reserva' reserva.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
                         </td>

@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0 text-white fw-bold">Gestión de Mesas</h2>
         <a href="{% url 'crear_mesa' %}" class="btn fw-semibold px-3" style="background-color: #d4a359; color: #181512;">
-            + Nueva Mesa
+            Agregar Mesa
         </a>
     </div>
 
@@ -17,7 +17,6 @@
             <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-hover-bg: rgba(212, 163, 89, 0.1);">
                 <thead>
                     <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); color: #d4a359;">
-                        <th class="ps-4">ID</th>
                         <th>Codigo</th>
                         <th>Estado</th>
                         <th>Sector</th>
@@ -27,11 +26,11 @@
                 <tbody>
                     {% for mesa in mesa %}
                     <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                        <td class="ps-4 text-light">{{ mesa.id }}</td>
                         <td class="text-light opacity-75">{{ mesa.codigo_mesa }}</td>
                         <td class="text-light opacity-75">{{ mesa.estado }}</td>
                         <td class="text-light opacity-75">{{ mesa.sector }}</td>
                         <td class="pe-4 text-end">
+                            <a href="{% url 'detalle_mesa' mesa.id %}" class="btn btn-sm btn-outline-info me-1">Detalle</a>
                             <a href="{% url 'editar_mesa' mesa.id %}" class="btn btn-sm btn-outline-warning me-1">Editar</a>
                             <a href="{% url 'eliminar_mesa' mesa.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
                         </td>

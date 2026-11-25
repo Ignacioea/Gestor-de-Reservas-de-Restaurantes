@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-0 shadow-lg mx-auto" style="max-width: 900px; background-color: rgba(25, 22, 19, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(212, 163, 89, 0.25) !important;">
+        <div class="card-header border-bottom border-secondary py-3 d-flex justify-content-between align-items-center" style="background-color: rgba(212, 163, 89, 0.12);">
+            <h4 class="mb-0" style="color: #e5b869;">Detalle del Restaurante</h4>
+        </div>
+        <div class="card-body p-4 text-light">
+            <div class="row">
+                <!-- Columna 1 -->
+                <div class="col-md-6">
+                    <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                        <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">ID</small>
+                        <p class="mb-0 text-light opacity-75">{{ restaurante.id }}</p>
+                    </div>
+                    <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                        <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">Nombre</small>
+                        <p class="mb-0 text-light opacity-75">{{ restaurante.nombre }}</p>
+                    </div>
+
+                    <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                        <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">Dirección</small>
+                        <p class="mb-0 text-light opacity-75">{{ restaurante.direccion }}</p>
+                    </div>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="col-md-6">
+                    <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                        <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">Teléfono</small>
+                        <p class="mb-0 text-light opacity-75">{{ restaurante.telefono }}</p>
+                    </div>
+                    <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                        <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">Capacidad total</small>
+                        <p class="mb-0 text-light opacity-75">{{ restaurante.capacidad_total }}</p>
+                    </div>
+                    <div class="mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                        <small class="text-uppercase d-block mb-1" style="color: #d4a359; letter-spacing: 0.5px;">Estado</small>
+                        <p class="mb-0 text-light opacity-75">{{ restaurante.estado }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-3">
+                <a href="{% url 'restaurante' %}" class="btn btn-outline-secondary">Volver</a>
+                <a href="{% url 'editar_restaurante' restaurante.id %}" class="btn btn-outline-warning">Editar</a>
+                <a href="{% url 'eliminar_restaurante' restaurante.id %}" class="btn btn-outline-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

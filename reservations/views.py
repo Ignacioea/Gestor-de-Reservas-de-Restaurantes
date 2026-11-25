@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from django.urls import reverse_lazy
 from . import forms as fo
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from . import models as mod 
 from . import serializer as ser
 # Create your views here.
@@ -33,6 +33,11 @@ class RolDeleteView(DeleteView):
     template_name = "roles/eliminar_rol.html"
     success_url = reverse_lazy("roles")
 
+class RolDetailView(DetailView):
+    model = mod.Rol
+    template_name = "roles/detalle_rol.html"
+    context_object_name = "rol"
+
 class RolViewSet (viewsets.ModelViewSet):
     queryset = mod.Rol.objects.all()
     serializer_class = ser.RolSerializer
@@ -59,6 +64,11 @@ class UsuarioDeleteView(DeleteView):
     model = mod.Usuario
     template_name = "usuarios/eliminar_usuario.html"
     success_url = reverse_lazy("usuarios")
+
+class UsuarioDetailView(DetailView):
+    model = mod.Usuario
+    template_name = "usuarios/detalle_usuario.html"
+    context_object_name = "usuario"
 
 class UsuarioViewSet (viewsets.ModelViewSet):
     queryset = mod.Usuario.objects.all()
@@ -87,6 +97,10 @@ class RestauranteDeleteView(DeleteView):
     template_name = "restaurante/eliminar_restaurante.html"
     success_url = reverse_lazy("restaurante")
 
+class RestauranteDetailView(DetailView):
+    model = mod.Restaurante
+    template_name = "restaurante/detalle_restaurante.html"
+    context_object_name = "restaurante"
 
 class RestauranteViewSet (viewsets.ModelViewSet):
     queryset = mod.Restaurante.objects.all()
@@ -116,6 +130,12 @@ class SectorDeleteView(DeleteView):
     template_name = "sectores/eliminar_sector.html"
     success_url = reverse_lazy("sector")
 
+class SectorDetailView(DetailView):
+    model = mod.Sector
+    template_name = "sectores/detalle_sector.html"
+    context_object_name = "sector"
+
+
 class SectorViewSet (viewsets.ModelViewSet):
     queryset = mod.Sector.objects.all()
     serializer_class = ser.SectorSerializer
@@ -142,6 +162,11 @@ class MesaDeleteView(DeleteView):
     model = mod.Mesa
     template_name = "mesas/eliminar_mesa.html"
     success_url = reverse_lazy("mesa")
+
+class MesaDetailView(DetailView):
+    model = mod.Mesa
+    template_name = "mesas/detalle_mesa.html"
+    context_object_name = "mesa"
 
 class MesaViewSet (viewsets.ModelViewSet):
     queryset = mod.Mesa.objects.all()
@@ -170,6 +195,11 @@ class BloqueoDeleteView(DeleteView):
     template_name = "bloqueos/eliminar_bloqueo.html"
     success_url = reverse_lazy("bloqueo")
 
+class BloqueoDetailView(DetailView):
+    model = mod.Bloqueo
+    template_name = "bloqueos/detalle_bloqueo.html"
+    context_object_name = "bloqueo"
+
 class BloqueoViewSet (viewsets.ModelViewSet):
     queryset = mod.Bloqueo.objects.all()
     serializer_class = ser.BloqueoSerializer
@@ -196,6 +226,12 @@ class ReservaDeleteView(DeleteView):
     model = mod.Reserva
     template_name = "reservas/eliminar_reserva.html"
     success_url = reverse_lazy("reserva")
+
+class ReservaDetailView(DetailView):
+    model = mod.Reserva
+    template_name = "reservas/detalle_reserva.html"
+    context_object_name = "reserva"
+
 
 class ReservaViewSet (viewsets.ModelViewSet):
     queryset = mod.Reserva.objects.all()

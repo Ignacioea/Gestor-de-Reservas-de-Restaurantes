@@ -40,7 +40,7 @@ class Restaurante(models.Model):
         db_table_comment = "Datos principales de cada local o sucursal"
             
     def __str__(self):
-        return f"{self.nombre}, ubicado en {self.direccion}"
+        return f"{self.nombre}"
 
 class Sector(models.Model):
     nombre = models.CharField(max_length=100)
@@ -64,7 +64,7 @@ class Mesa(models.Model):
         db_table_comment = "Mobiliario físico y capacidad asignable para cada sector"
             
     def __str__(self):
-        return f"{self.codigo_mesa} {self.sector.nombre}"
+        return f"{self.codigo_mesa}"
 
 class Bloqueo(models.Model):
     fecha_inicio = models.DateTimeField()
