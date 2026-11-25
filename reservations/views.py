@@ -121,6 +121,28 @@ class SectorViewSet (viewsets.ModelViewSet):
     serializer_class = ser.SectorSerializer
 
 #MESAS
+class MesaListView(ListView):
+    model = mod.Mesa
+    template_name = "mesas/lista_mesa.html"
+    context_object_name="mesa"
+
+class MesaCreateView(CreateView):
+    model = mod.Mesa
+    form_class = fo.MesaForm
+    template_name = "mesas/form_mesa.html"
+    success_url = reverse_lazy("mesa")
+
+class MesaUpdateView(UpdateView):
+    model = mod.Mesa
+    form_class = fo.MesaForm
+    template_name = "mesas/form_mesa.html"
+    success_url = reverse_lazy("mesa")
+
+class MesaDeleteView(DeleteView):
+    model = mod.Mesa
+    template_name = "mesas/eliminar_mesa.html"
+    success_url = reverse_lazy("mesa")
+
 class MesaViewSet (viewsets.ModelViewSet):
     queryset = mod.Mesa.objects.all()
     serializer_class = ser.MesaSerializer
@@ -130,7 +152,7 @@ class BloqueoViewSet (viewsets.ModelViewSet):
     queryset = mod.Bloqueo.objects.all()
     serializer_class = ser.BloqueoSerializer
 
-#MESAS
+#RESERVAS
 class ReservaViewSet (viewsets.ModelViewSet):
     queryset = mod.Reserva.objects.all()
     serializer_class = ser.ReservaSerializer

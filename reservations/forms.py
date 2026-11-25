@@ -159,3 +159,46 @@ class SectorForm(forms.ModelForm):
                 }
             ),
         }
+
+class MesaForm(forms.ModelForm):
+    class Meta:
+        model = mod.Mesa
+        fields = [
+            'sector',
+            'codigo_mesa',
+            'capacidad_min',
+            'capacidad_max',
+            'estado',
+        ]
+        widgets = {
+            'sector': forms.Select(
+                attrs={
+                    'class': 'form-select',
+                }
+            ),
+            'codigo_mesa': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ej: M-01, T-04...',
+                }
+            ),
+            'capacidad_min': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ej: 2',
+                    'min': '1',
+                }
+            ),
+            'capacidad_max': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ej: 4',
+                    'min': '1',
+                }
+            ),
+            'estado': forms.CheckboxInput(
+                attrs={
+                    'class': 'form-check-input',
+                }
+            ),
+        }

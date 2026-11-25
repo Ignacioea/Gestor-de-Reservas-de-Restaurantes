@@ -46,6 +46,11 @@ urlpatterns = [
     path("sector/crear", views.SectorCreateView.as_view(), name="crear_sector"),
     path("sector/editar/<int:pk>/", views.SectorUpdateView.as_view(), name="editar_sector"),
     path("sector/eliminar/<int:pk>/", views.SectorDeleteView.as_view(), name="eliminar_sector"),
-        
 
+    #MESAS
+    path("mesa/", views.MesaListView.as_view(), name="mesa"),
+    path("mesa/crear", views.MesaCreateView.as_view(), name="crear_mesa"),
+    path("mesa/editar/<int:pk>/", views.MesaUpdateView.as_view(), name="editar_mesa"),
+    path("mesa/eliminar/<int:pk>/", views.MesaDeleteView.as_view(), name="eliminar_mesa"),
+            
 ]
