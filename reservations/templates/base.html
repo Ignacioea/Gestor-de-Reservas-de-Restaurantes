@@ -36,7 +36,7 @@
                     <a class="nav-link {% if 'usuarios' in request.path %}active{% endif %}" href="{% url 'usuarios' %}">
                         <i class="bi bi-people me-2"></i> Usuarios
                     </a>
-                    <a class="nav-link {% if 'restaurantes' in request.path %}active{% endif %}" href="#">
+                    <a class="nav-link {% if 'restaurantes' in request.path %}active{% endif %}" href="{% url 'restaurante' %}">
                         <i class="bi bi-shop me-2"></i> Restaurantes
                     </a>
                     <a class="nav-link {% if 'sectores' in request.path %}active{% endif %}" href="#">

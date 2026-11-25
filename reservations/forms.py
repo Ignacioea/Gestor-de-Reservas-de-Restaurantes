@@ -86,3 +86,46 @@ class UsuarioForm(forms.ModelForm):
         if commit:
             usuario.save()
         return usuario
+
+class RestauranteForm(forms.ModelForm):
+    class Meta:
+        model = mod.Restaurante
+        fields = [
+            'nombre',
+            'direccion',
+            'telefono',
+            'capacidad_total',
+            'estado',
+        ]
+        widgets = {
+            'nombre': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Nombre del local o sucursal...'
+                }
+            ),
+            'direccion': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Dirección completa...'
+                }
+            ),
+            'telefono': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': '+56 9 1234 5678'
+                }
+            ),
+            'capacidad_total': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ej: 80',
+                    'min': '1'
+                }
+            ),
+            'estado': forms.CheckboxInput(
+                attrs={
+                    'class': 'form-check-input'
+                }
+            ),
+        }

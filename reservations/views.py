@@ -1,7 +1,7 @@
 from django.shortcuts import render 
 from rest_framework import viewsets
 from django.urls import reverse_lazy
-from .forms import RolForm, UsuarioForm
+from .forms import RolForm, UsuarioForm, RestauranteForm
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from . import models as mod 
 from . import serializer as ser
@@ -65,6 +65,29 @@ class UsuarioViewSet (viewsets.ModelViewSet):
     serializer_class = ser.UsuarioSerializer
 
 #RESTAURANTE
+class RestauranteListView(ListView):
+    model = mod.Restaurante
+    template_name = "restaurante/lista_restaurante.html"
+    context_object_name="restaurante"
+
+class RestauranteCreateView(CreateView):
+    model = mod.Restaurante
+    form_class = RestauranteForm
+    template_name = "restaurante/form_restaurante.html"
+    success_url = reverse_lazy("restaurante")
+
+class RestauranteUpdateView(UpdateView):
+    model = mod.Restaurante
+    form_class = RestauranteForm
+    template_name = "restaurante/form_restaurante.html"
+    success_url = reverse_lazy("restaurante")
+
+class RestauranteDeleteView(DeleteView):
+    model = mod.Restaurante
+    template_name = "restaurante/eliminar_restaurante.html"
+    success_url = reverse_lazy("restaurante")
+
+
 class RestauranteViewSet (viewsets.ModelViewSet):
     queryset = mod.Restaurante.objects.all()
     serializer_class = ser.RestauranteSerializer

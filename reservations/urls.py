@@ -35,5 +35,11 @@ urlpatterns = [
     path("usuarios/editar/<int:pk>/", views.UsuarioUpdateView.as_view(), name="editar_usuarios"),
     path("usuarios/eliminar/<int:pk>/", views.UsuarioDeleteView.as_view(), name="eliminar_usuarios"),
 
+    #RESTAURANTES
+    path("restaurante/", views.RestauranteListView.as_view(), name="restaurante"),
+    path("restaurante/crear", views.RestauranteCreateView.as_view(), name="crear_restaurante"),
+    path("restaurante/editar/<int:pk>/", views.RestauranteUpdateView.as_view(), name="editar_restaurante"),
+    path("restaurante/eliminar/<int:pk>/", views.RestauranteDeleteView.as_view(), name="eliminar_restaurante"),
+        
 
 ]
