@@ -58,5 +58,11 @@ urlpatterns = [
     path("reserva/crear", views.ReservaCreateView.as_view(), name="crear_reserva"),
     path("reserva/editar/<int:pk>/", views.ReservaUpdateView.as_view(), name="editar_reserva"),
     path("reserva/eliminar/<int:pk>/", views.ReservaDeleteView.as_view(), name="eliminar_reserva"),
+    #reservas
+    path("bloqueo/", views.BloqueoListView.as_view(), name="bloqueo"),
+    path("bloqueo/crear", views.BloqueoCreateView.as_view(), name="crear_bloqueo"),
+    path("bloqueo/editar/<int:pk>/", views.BloqueoUpdateView.as_view(), name="editar_bloqueo"),
+    path("bloqueo/eliminar/<int:pk>/", views.BloqueoDeleteView.as_view(), name="eliminar_bloqueo"),
+              
            
 ]

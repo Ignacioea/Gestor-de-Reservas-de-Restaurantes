@@ -206,10 +206,8 @@ class MesaForm(forms.ModelForm):
 ESTADOS_RESERVA = [
     ('PENDIENTE', 'Pendiente'),
     ('CONFIRMADA', 'Confirmada'),
-    ('SENTADA', 'Sentada'),
     ('CANCELADA', 'Cancelada'),
-    ('NO-SHOW', 'No-Show'),
-    ('FINALIZADA', 'Finalizada'),
+    ('FINALIZADA', 'Finalizada')
 ]
 
 class ReservaForm(forms.ModelForm):
@@ -282,6 +280,43 @@ class ReservaForm(forms.ModelForm):
                     'class': 'form-control',
                     'placeholder': 'Observaciones del cliente (opcional)...',
                     'rows': '3',
+                }
+            ),
+        }
+
+class BloqueoForm(forms.ModelForm):
+    class Meta:
+        model = mod.Bloqueo
+        fields = [
+            'mesa',
+            'fecha_inicio',
+            'fecha_fin',
+            'motivo',
+        ]
+        widgets = {
+            'mesa': forms.Select(
+                attrs={
+                    'class': 'form-select',
+                }
+            ),
+            'fecha_inicio': forms.DateTimeInput(
+                format='%Y-%m-%dT%H:%M',
+                attrs={
+                    'class': 'form-control',
+                    'type': 'datetime-local',
+                }
+            ),
+            'fecha_fin': forms.DateTimeInput(
+                format='%Y-%m-%dT%H:%M',
+                attrs={
+                    'class': 'form-control',
+                    'type': 'datetime-local',
+                }
+            ),
+            'motivo': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ej: Mantención, Evento privado, Mesa dañada...',
                 }
             ),
         }

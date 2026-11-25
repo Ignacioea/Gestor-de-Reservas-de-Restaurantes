@@ -48,6 +48,9 @@
                     <a class="nav-link {% if 'reservas' in request.path %}active{% endif %}" href="{% url 'reserva' %}">
                         <i class="bi bi-calendar-check me-2"></i> Reservas
                     </a>
+                    <a class="nav-link {% if 'reservas' in request.path %}active{% endif %}" href="{% url 'bloqueo' %}">
+                        <i class="bi bi-calendar-check me-2"></i> Bloqueos
+                    </a>
                 </nav>
             </div>
         </aside>

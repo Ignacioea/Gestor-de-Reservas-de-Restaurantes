@@ -147,7 +147,29 @@ class MesaViewSet (viewsets.ModelViewSet):
     queryset = mod.Mesa.objects.all()
     serializer_class = ser.MesaSerializer
 
-#BLOQUEO
+#BLOQUEOS
+class BloqueoListView(ListView):
+    model = mod.Bloqueo
+    template_name = "bloqueos/lista_bloqueo.html"
+    context_object_name="bloqueo"
+
+class BloqueoCreateView(CreateView):
+    model = mod.Bloqueo
+    form_class = fo.BloqueoForm
+    template_name = "bloqueos/form_bloqueo.html"
+    success_url = reverse_lazy("bloqueo")
+
+class BloqueoUpdateView(UpdateView):
+    model = mod.Bloqueo
+    form_class = fo.BloqueoForm
+    template_name = "bloqueos/form_bloqueo.html"
+    success_url = reverse_lazy("bloqueo")
+
+class BloqueoDeleteView(DeleteView):
+    model = mod.Bloqueo
+    template_name = "bloqueos/eliminar_bloqueo.html"
+    success_url = reverse_lazy("bloqueo")
+
 class BloqueoViewSet (viewsets.ModelViewSet):
     queryset = mod.Bloqueo.objects.all()
     serializer_class = ser.BloqueoSerializer
@@ -179,10 +201,12 @@ class ReservaViewSet (viewsets.ModelViewSet):
     queryset = mod.Reserva.objects.all()
     serializer_class = ser.ReservaSerializer
 
+#BITÁCORA DE CAMBIOS EN UNA RESERVA
 class CambioReservaViewSet (viewsets.ModelViewSet):
     queryset = mod.CambioReserva.objects.all()
     serializer_class = ser.CambioReservaSerializer
 
+#PARA SELECCIONAR VARIAS MESAS EN UNA RESERVA
 class ReservaMesaViewSet (viewsets.ModelViewSet):
     queryset = mod.ReservaMesa.objects.all()
     serializer_class = ser.ReservaMesaSerializer
